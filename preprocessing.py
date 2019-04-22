@@ -10,6 +10,7 @@ from collections import Counter
 import string
 import emoji
 import pickle
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Files must be in txt format (exactly as they are exported from Whatsapp app)
@@ -42,30 +43,42 @@ def read_history(file):
 # history = pd.DataFrame
 all = []
 for file in files_individual:
-    print(file)
     loaded_chat = read_history(file)
     all.append(loaded_chat)
-
-for m in all:
-    print(m['name'])
 
 history = pd.concat(all).reset_index()
 
 print(history.shape)
 # Deleting messages with media
-history = history[~history['msg'].str.contains("omitted")]
+history = history[~history['msg'].str.contains("omitted|end-to-end encryption")]
 
 #clean data
 history['msg'] = history['msg'].str.lower()
 
 #value counts
-print(history.groupby(['name']).groups.keys())
-#
-# history_by_name = history.groupby('name')['msg']
-# #print(history_by_name.groups)
-#
-# v = TfidfVectorizer()
-# x = v.fit_transform(history['msg'])
-#
-# #print(x)
+by_names = history.drop(['index', 'date', 'msg_len'], axis=1)
+by_names = by_names.groupby('name').agg(lambda x: x.tolist())
+# for m in by_names['msg']:
+#     print(m)
 
+# v = TfidfVectorizer()
+# x = v.fit_transform(by_names)
+
+
+# text_data = np.array(['I love Brazil. Brazil!',
+#                       'Sweden is best',
+#                       'Germany beats both'])
+
+text_data = np.array(history['msg'])
+
+# Create the tf-idf feature matrix
+tfidf = TfidfVectorizer()
+feature_matrix = tfidf.fit_transform(text_data)
+
+# Show tf-idf feature matrix
+print(feature_matrix.toarray())
+
+# Show tf-idf feature matrix
+print(tfidf.get_feature_names())
+
+print(pd.DataFrame(feature_matrix.toarray(), columns=tfidf.get_feature_names()))
