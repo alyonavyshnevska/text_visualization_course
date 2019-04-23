@@ -1,7 +1,7 @@
 import pandas as pd
 from collections import Counter
 import emoji
-from visualize import export_to_csv_file
+# from visualize import export_to_csv_file
 
 def extract_emojis(str):
     return ''.join(c for c in str if c in emoji.UNICODE_EMOJI)
