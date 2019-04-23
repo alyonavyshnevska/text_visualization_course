@@ -57,7 +57,7 @@ def create_tf_idf_matrix(dataframe_name):
     by_names = by_names.groupby('name')['msg'].apply(' '.join)
 
     # Create the tf-idf feature matrix
-    with open('german-stopwords.txt') as f:
+    with open('docs/german-stopwords.txt') as f:
         german_stopwords = (f.read().split('\n'))
 
     tfidf = TfidfVectorizer(min_df=3, stop_words=german_stopwords)
@@ -83,7 +83,6 @@ def create_tfidf_data_frame(tfidf,feature_matrix, create_transpose=False):
 
 def main():
     history = create_history_dataframe('data', one_year=False)
-
     # Plot mean mean lengths of messages
     #plot_mean_values(history, export_plot=False)
 
@@ -99,3 +98,4 @@ def main():
     create_emoji_matrix(history, export_matrix=False)
 
 
+main()
