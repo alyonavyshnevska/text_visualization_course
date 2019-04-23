@@ -98,4 +98,5 @@ def main():
     create_emoji_matrix(history, export_matrix=False)
 
 
-main()
+if __name__ == '__main__':
+    main()
