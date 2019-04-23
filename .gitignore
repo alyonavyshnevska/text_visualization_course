@@ -1,7 +1,7 @@
+#Folders
 .idea/
-
-/tire
-
+/docs
+/results
 /data
 
 .DS_Store
