@@ -13,9 +13,12 @@ def create_history_dataframe(dir_name, one_year=False):
     files_individual = os.listdir(dir_name)
 
     all = []
+    codename_counter = 0
     for file in files_individual:
         loaded_chat = read_history(file)
+        loaded_chat['codename'] = "anonymous {}".format(codename_counter)
         all.append(loaded_chat)
+        codename_counter += 1
 
     history = pd.concat(all).reset_index()
 
@@ -53,7 +56,7 @@ def plot_mean_values(dataframe_name, export_plot=False):
 def create_tf_idf_matrix(dataframe_name):
 
     #join all messages by one person into one document
-    by_names = dataframe_name.drop(['index', 'date', 'msg_len'], axis=1)
+    by_names = dataframe_name.drop(['index', 'date', 'msg_len', 'codename'], axis=1)
     by_names = by_names.groupby('name')['msg'].apply(' '.join)
 
     # Create the tf-idf feature matrix
@@ -81,8 +84,9 @@ def create_tfidf_data_frame(tfidf,feature_matrix, create_transpose=False):
         return df
 
 
-def main():
+if __name__ == '__main__':
     history = create_history_dataframe('data', one_year=False)
+    print(history.columns)
     # Plot mean mean lengths of messages
     #plot_mean_values(history, export_plot=False)
 
@@ -91,12 +95,9 @@ def main():
 
     # Create tf-odf frame from tfidf matrix
     tfidf_data_frame = create_tfidf_data_frame(tfidf, feature_matrix, create_transpose=False)
+    print('Top tf-idf score for each person', tfidf_data_frame.max(axis=1))
 
     # Export tfidf_frame
     # export_to_csv_file('df_tfidf_ger.csv', tfidf_data_frame)
 
     create_emoji_matrix(history, export_matrix=False)
-
-
-if __name__ == '__main__':
-    main()
