@@ -16,7 +16,7 @@ def create_history_dataframe(dir_name, one_year=False):
     codename_counter = 0
     for file in files_individual:
         loaded_chat = read_history(file)
-        loaded_chat['codename'] = "anonymous {}".format(codename_counter)
+        loaded_chat['chat_number'] = "anonymous {}".format(codename_counter)
         all.append(loaded_chat)
         codename_counter += 1
 
@@ -53,11 +53,11 @@ def plot_mean_values(dataframe_name, export_plot=False):
     return mean_msg_len
 
 
-def create_tf_idf_matrix(dataframe_name):
+def create_tf_idf_matrix(dataframe_name, groupby_param, cols_to_drop):
 
     #join all messages by one person into one document
-    by_names = dataframe_name.drop(['index', 'date', 'msg_len', 'codename'], axis=1)
-    by_names = by_names.groupby('name')['msg'].apply(' '.join)
+    by_names = dataframe_name.drop(cols_to_drop, axis=1)
+    by_names = by_names.groupby(groupby_param)['msg'].apply(' '.join)
 
     # Create the tf-idf feature matrix
     with open('docs/german-stopwords.txt') as f:
@@ -86,12 +86,12 @@ def create_tfidf_data_frame(tfidf,feature_matrix, create_transpose=False):
 
 if __name__ == '__main__':
     history = create_history_dataframe('data', one_year=False)
-    print(history.columns)
+    #print(history.columns)
     # Plot mean mean lengths of messages
     #plot_mean_values(history, export_plot=False)
 
     # Create tf_idf feature matrix
-    tfidf, feature_matrix = create_tf_idf_matrix(history)
+    tfidf, feature_matrix = create_tf_idf_matrix(history, 'name', ['index', 'date', 'msg_len', 'chat_number'])
 
     # Create tf-odf frame from tfidf matrix
     tfidf_data_frame = create_tfidf_data_frame(tfidf, feature_matrix, create_transpose=False)
