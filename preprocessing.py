@@ -12,8 +12,9 @@ def read_history(file):
     history = pd.DataFrame(messages, columns=['date', 'name', 'msg'])
     history['date'] = history['date'].str[1:-1]     # strip brackets
     history['date'] = pd.to_datetime(history['date'], format="%d.%m.%y, %H:%M:%S")
-    history['date'] = history['date'].apply(lambda x: x.date())
+    # history['date'] = history['date'].apply(lambda x: x.date())
     history['msg_len'] = history['msg'].str.len()
+
 
     return history
 
