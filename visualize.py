@@ -14,9 +14,10 @@ def create_history_dataframe(dir_name, one_year=False):
 
     all = []
     codename_counter = 0
-    for file in files_individual:
+    for file in files_individual[:5]:
         loaded_chat = read_history(file)
-        loaded_chat['chat_number'] = "anonymous {}".format(codename_counter)
+        #loaded_chat['chat_number'] = "anonymous {}".format(codename_counter)
+        loaded_chat['chat_number'] = codename_counter
         all.append(loaded_chat)
         codename_counter += 1
 
@@ -28,6 +29,7 @@ def create_history_dataframe(dir_name, one_year=False):
     # Clean Data
     history['msg'] = history['msg'].str.lower()
     history['date'] = pd.to_datetime(history['date'])
+    history['msg'] = history['msg'].str.replace('\d+', '')
 
     # If only use data of one year
     if one_year == True:
@@ -57,19 +59,22 @@ def create_tf_idf_matrix(dataframe_name, groupby_param, cols_to_drop):
 
     #join all messages by one person into one document
     by_names = dataframe_name.drop(cols_to_drop, axis=1)
-    by_names = by_names.groupby(groupby_param)['msg'].apply(' '.join)
+    #by_names = by_names.groupby(groupby_param)['msg'].apply(' '.join)
 
     # Create the tf-idf feature matrix
     with open('docs/german-stopwords.txt') as f:
         german_stopwords = (f.read().split('\n'))
 
     tfidf = TfidfVectorizer(min_df=3, stop_words=german_stopwords)
-    feature_matrix = tfidf.fit_transform(by_names)
+    feature_matrix = tfidf.fit_transform(by_names['msg'])
 
+    df = pd.DataFrame(feature_matrix.toarray(), columns = tfidf.get_feature_names())
+
+    #target = by_names[groupby_param].values
     #print(tfidf.get_feature_names())
     #print(feature_matrix.shape)
 
-    return tfidf, feature_matrix
+    return tfidf, feature_matrix, by_names[groupby_param], df
 
 
 def create_tfidf_data_frame(tfidf,feature_matrix, create_transpose=False):
