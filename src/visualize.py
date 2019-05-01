@@ -1,11 +1,9 @@
 import os
 import pandas as pd
-from collections import Counter
-import emoji_process
 from sklearn.feature_extraction.text import TfidfVectorizer
 from matplotlib import pyplot as plt
 from preprocessing import read_history
-from emoji_process import create_emoji_matrix, extract_emojis, Count_Emojis
+from src.emoji_process import create_emoji_matrix
 
 
 def create_history_dataframe(dir_name, one_year=False):
