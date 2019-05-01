@@ -6,6 +6,9 @@
 
 .DS_Store
 
+#Files
+choice_of_vis.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
