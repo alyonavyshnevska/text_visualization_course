@@ -51,19 +51,19 @@ def visualise_with_sns(embedding, labels):
     plt.show()
 
 
-def visualise_with_plotly(embedding, target, file_name):
+def visualise_with_plotly(embedding, history, file_name):
 
     # Create a trace
     trace = go.Scatter(
         x=embedding[:, 0],
         y=embedding[:, 1],
-        text=target,
+        text=history['chat_number'],
         mode='markers',
         name = "Chat Messages",
         showlegend=True,
         marker=dict(
             size=16,
-            color=embedding[:, 0],  # set color equal to a variable
+            color=history['chat_number'],  # set color equal to a variable
             colorscale='Viridis',
             showscale=True
             )
@@ -86,9 +86,9 @@ def visualize_3d(embedding, history, file_name, target):
     trace1 = go.Scatter3d(
         x=embedding[:, 0],
         y=embedding[:, 1],
-        z=history['chat_number'],
+        z=history['msg_len'],
         mode='markers',
-        text=target,
+        text=history['chat_number'],
         marker=dict(
             size=12,
             color=history['chat_number'],  # set color to an array/list of desired values
@@ -107,36 +107,7 @@ def visualize_3d(embedding, history, file_name, target):
         )
     )
     fig = go.Figure(data=data, layout=layout)
-    py.plot(fig, filename='3d-scatter-colorscale')
-
-    # trace = [go.Scatter3d(
-    #     x=embedding[:, 0],
-    #     y=embedding[:, 1],
-    #     z=history['msg_len'],
-    #     mode='markers'
-    # )]
-    #
-    # data = [trace]
-    # mylayout = go.Layout(
-    #     title="TFIDF Scores for Chat Messages from 5 Different Chats"
-    # )
-    # fig = go.Figure(data=data, layout=mylayout)
-    # py.plot(fig, filename = file_name, auto_open=True)
-
-
-    # fig, ax = plt.subplots(figsize=(12, 10))
-    # plt.scatter(
-    #     embedding[:, 0], embedding[:, 1]
-    # )
-    # plt.setp(ax, xticks=[], yticks=[])
-    # plt.title("Chat Messages data embedded into two dimensions by UMAP", fontsize=18)
-
-    # plt.show()
-
-    # Use the 'hue' argument to provide a factor variable
-    # sns.lmplot(x="sepal_length", y="sepal_width", data=df, fit_reg=False, hue='species', legend=False)
-
-    # Move the legend to an empty part of the plot
+    py.plot(fig, filename=file_name)
 
 
 
@@ -148,7 +119,9 @@ if __name__ == '__main__':
     labels = np.array(target)
     embedding = np.load('embedding.npy')
 
-    visualize_3d(embedding, history, '3dplot_04', labels)
+    visualise_with_plotly(embedding, history, '2d_reduced')
+
+    # visualize_3d(embedding, history, '3dplot_03', labels)
     # visualise_with_sns(embedding, target)
 
     #visualise_with_yellowbrick(feature_matrix, labels)
