@@ -1,8 +1,5 @@
-import os
-from preprocessing import read_history
-import pandas as pd
 import umap
-from visualize import create_tf_idf_matrix, create_history_dataframe
+from src.visualize import create_tf_idf_matrix, create_history_dataframe
 import matplotlib.pyplot as plt
 import seaborn as sns
 #from plotly.offline.offline import plot as off_plot
@@ -12,7 +9,6 @@ import plotly.graph_objs as go
 import plotly.plotly as py
 import plotly.tools as plttools
 import numpy as np
-from sklearn.datasets import fetch_mldata
 
 plttools.set_credentials_file(username='gigi_karlo_', api_key='Vm4QxLy6m3t2gSIAEysa')
 
