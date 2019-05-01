@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from matplotlib import pyplot as plt
-from preprocessing import read_history
+from src.preprocessing import read_history
 from src.emoji_process import create_emoji_matrix
 
 
