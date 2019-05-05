@@ -2,8 +2,10 @@
 > **Date:** 07.04. *(Due: 07.04.)*  
 > **Name:** `AlVy` Alyona Vyshnevska    
 > **Session:** [Word Embeddings + Visualization](../index)   
-> **Code:** [here]()   
-> **Comments:** [here](https://gitlab.hpi.de/fg-naumann/teaching/tvip19/issues/2)
+> **Code:** [github](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/04_word_embeddings)   
+
 ----
 
-Your Text here
+Step One:
+
+Find out the meaning of _life_ according to word2vec and glove
