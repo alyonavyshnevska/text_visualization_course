@@ -1,23 +1,23 @@
 from pathlib import Path
-from gensim.models import Word2Vec
-from gensim.models import KeyedVectors
+from gensim.models import Word2Vec, KeyedVectors
 import re
 import string
 from nltk.corpus import stopwords
-from gensim.models import Word2Vec
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
+from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
-def process_text(filename):
+
+def process_text(filename, split_at):
 	''' reads a txt file returns a clean data
 	'''
 	clean_sentences = []
 	stop_words = set(stopwords.words('english'))
 	with open(filename, 'r') as f:
-		sentences = f.read().split('\n')
+		sentences = f.read().split(split_at)
 		clean_sentences = clean_data(sentences, clean_sentences, stop_words)
 
 		return clean_sentences
@@ -29,7 +29,11 @@ def clean_data(sentences, clean_sentences, stop_words):
 		sentence = sentence.lower()
 		sentence = re.sub(r'\d+', '', sentence)
 		sentence = sentence.translate(str.maketrans('', '', string.punctuation)).split()
-		sentence = [word for word in sentence if word not in stop_words]
+		sentence = [word for word in sentence if not word in stop_words]
+
+		#stem
+		#stemmer = SnowballStemmer("english")
+		#sentence = [stemmer.stem(word) for word in sentence]
 
 		#lemmatize words
 		lemmatizer = WordNetLemmatizer()
@@ -42,10 +46,10 @@ def clean_data(sentences, clean_sentences, stop_words):
 
 
 
-def train_model(input_filename):
+def train_model(input_filename, model_name, split_at):
 	# define training data
-	sentences = process_text(input_filename)
-	# print(sentences)
+	sentences = process_text(input_filename, split_at)
+	print(sentences)
 
 	# train model
 	model = Word2Vec(sentences, min_count=1)
@@ -61,22 +65,25 @@ def train_model(input_filename):
 	# print(model.wv['life'])
 
 	# save model
-	model.save('data/monty_python_model.bin')
+	model.save(model_name)
 
 	return model
 
 
-def load_model(model_name, text_filename=None):
+def load_model(model_name, text_filename, split_at):
 
 	my_file = Path(model_name)
 	if my_file.exists():
 		model = Word2Vec.load(model_name)
 	else:
-		model = train_model(text_filename)
+		model = train_model(text_filename, model_name, split_at)
 	return model
 
 
 def load_keyed_vectors(model_filename):
+	'''The trained word vectors are stored in a KeyedVectors instance in model.wv:
+	a much smaller and faster object that can be mmapped for lightning fast loading
+	and sharing the vectors in RAM between processes'''
 	word_vectors = KeyedVectors.load(model_filename, mmap='r')
 	return word_vectors
 
@@ -110,11 +117,11 @@ def create_word_cloud(most_similar_list):
 
 
 #load model
-#model = load_model('data/monty_python_model.bin', 'data/monty_python_meaning_of_life.txt')
+model = load_model('data/monty_python_model.bin', 'data/monty_python_meaning_of_life.txt', '\n')
 
 #load keyed word vectors
 word_vectors = load_keyed_vectors('data/monty_python_model.bin')
-most_similar_list = word_vectors.wv.most_similar(positive=['life'])
+most_similar_list = model.wv.most_similar(positive=['life'], topn=30)
 print(most_similar_list)
 create_word_cloud(most_similar_list)
 
