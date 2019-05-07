@@ -2,6 +2,9 @@ from pathlib import Path
 from gensim.models import Word2Vec, KeyedVectors
 import re
 import string
+import os
+import numpy as np
+import tensorflow as tf
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem import WordNetLemmatizer
@@ -9,6 +12,7 @@ from nltk.tokenize import word_tokenize
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+from tensorflow.contrib.tensorboard.plugins import projector
 
 
 def process_text(filename, split_at):
@@ -54,10 +58,10 @@ def train_model(input_filename, model_name, split_at):
 	# train model
 	#model = Word2Vec(sentences, min_count=1)
 	model = Word2Vec(sentences, alpha=0.025, size=300, min_alpha=0.025,
-					 min_count=1, seed=1, workers=1, iter=50, sg=1)
+					 min_count=1, seed=1, workers=1, iter=50)
 
 	# summarize the loaded model
-	# print(model)
+	#print(model)
 
 	# summarize vocabulary
 	words = list(model.wv.vocab)
@@ -117,21 +121,57 @@ def create_word_cloud(most_similar_list):
 	plt.axis("off")
 	plt.show()
 
+def save_as_tsv(model):
+	'''create a tsv file and a metadata tsv file to visualise vectors'''
+
+	embeddings = {word:vec for word,vec in zip(model.wv.vocab.keys(),
+											   model.wv.vectors)}
+
+	embeddings_vectors = np.stack(list(embeddings.values()), axis=0)
+
+	# Create some variables.
+	emb = tf.Variable(embeddings_vectors, name='word_embeddings')
+
+	# Add an op to initialize the variable.
+	init_op = tf.global_variables_initializer()
+
+	# Add ops to save and restore all the variables.
+	saver = tf.train.Saver()
+
+	# Later, launch the model, initialize the variables and save the
+	# variables to disk.
+	with tf.Session() as sess:
+		sess.run(init_op)
+
+		# Save the variables to disk.
+		save_path = saver.save(sess, "model_dir/model.ckpt")
+		print("Model saved in path: %s" % save_path)
+
+	words = '\n'.join(list(embeddings.keys()))
+
+	with open(os.path.join('model_dir', 'metadata.tsv'), 'w') as f:
+		f.write(words)
+
+
+# .tsv file written in model_dir/metadata.tsv
+
 
 #load model
+
 monty_text = 'data/monty_python_meaning_of_life.txt'
 monty_vectors = 'data/monty_python_model.bin'
 monty_sep = '\n'
 adams_text = 'data/life_universe.txt'
 adams_vectors = 'data/adams_model.bin'
 adams_sep = '\n\n'
-model = load_model(adams_vectors, adams_text, adams_sep)
+model = load_model('data/wiki.bin', 'data/wiki.txt', adams_sep)
 
 #load keyed word vectors (smaller in size, not able to train anymore)
-word_vectors = load_keyed_vectors(adams_vectors)
-most_similar_list = model.wv.most_similar(positive=['life'], topn=30)
-print(most_similar_list)
-create_word_cloud(most_similar_list)
+#word_vectors = load_keyed_vectors('data/wiki.bin')
+
+# most_similar_list = model.wv.most_similar(positive=['life'], topn=30)
+# print(most_similar_list)
+# create_word_cloud(most_similar_list)
 
 #X = model[model.wv.vocab]
 #visualize_embeddings(X)
