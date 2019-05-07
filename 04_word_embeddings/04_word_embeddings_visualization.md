@@ -104,4 +104,42 @@ Will skip-gram produce similar results? We just need to set `sg=1` as a paramete
 Yes, same results.
 
 
-### Visualise the Vector Space
+### _Wikipedia's_ Article on Life
+
+![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/wiki_iter_50_01.png)
+
+
+The top meaningful results are *lovelock*, *explaining*, *challenge*, *scientist*. It seems to be a common theme that words such as *struggle* and *challenge* are included. 
+
+
+Enough word clouds. Let's try visualising with [Tensorflow Projector](https://projector.tensorflow.org). 
+I couldn't get my own vectors loaded into the projector, therefore we will only take a look what pre-trained word embeddings have to say about our little quest for the meaning of _life_.
+
+Word2Vec All tensor, which consists of around 70K words and 200 dimensions reckons that *career*, *biography*, *childhood* are all similar in their memaning to _life_:
+
+![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/pretrained_10k.jpeg)
+
+
+
+Note that _death_ is also part of it. To me, this is a natural consequence of the algorithms placing words in a vector space based on the words they appear next to. 
+
+To illustrate this phenomenon, let us look at the nearest neighbours of the word _bad_. I would expect that he word _good_ would be very closely positioned.
+
+
+![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/pretrained_bad.jpeg)
+
+Indeed, good is distributionally most similar to _bad_.
+
+
+## Conclusion
+
+What have we learned?
+
+_Life_ and _discover_ are similar in meaning, but so are _life_ and _hell_ or _life_ and _struggle_. 
+
+I have also learned how to train my own word vectors on small datasets, tweak Word2Vec parameters to get consistent results. CBOW and skip-gram did indeed arrive at identical representations. 
+I have also created a bunch of word clouds to visually represent the most similar words and explored tensor flow projector.
+
+## Future Work
+
+Generate correct .tsv files to upload to the Tensorflow Projector and to visualise own word vectors in the Tensorflow Projector.
