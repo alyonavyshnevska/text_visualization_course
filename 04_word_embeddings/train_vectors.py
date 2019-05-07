@@ -52,7 +52,9 @@ def train_model(input_filename, model_name, split_at):
 	print(sentences)
 
 	# train model
-	model = Word2Vec(sentences, min_count=1)
+	#model = Word2Vec(sentences, min_count=1)
+	model = Word2Vec(sentences, alpha=0.025, size=300, min_alpha=0.025,
+					 min_count=1, seed=1, workers=1, iter=50, sg=1)
 
 	# summarize the loaded model
 	# print(model)
@@ -117,10 +119,16 @@ def create_word_cloud(most_similar_list):
 
 
 #load model
-model = load_model('data/monty_python_model.bin', 'data/monty_python_meaning_of_life.txt', '\n')
+monty_text = 'data/monty_python_meaning_of_life.txt'
+monty_vectors = 'data/monty_python_model.bin'
+monty_sep = '\n'
+adams_text = 'data/life_universe.txt'
+adams_vectors = 'data/adams_model.bin'
+adams_sep = '\n\n'
+model = load_model(adams_vectors, adams_text, adams_sep)
 
-#load keyed word vectors
-word_vectors = load_keyed_vectors('data/monty_python_model.bin')
+#load keyed word vectors (smaller in size, not able to train anymore)
+word_vectors = load_keyed_vectors(adams_vectors)
 most_similar_list = model.wv.most_similar(positive=['life'], topn=30)
 print(most_similar_list)
 create_word_cloud(most_similar_list)
