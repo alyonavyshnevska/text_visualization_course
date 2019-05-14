@@ -1,77 +1,49 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.wordnet import WordNetLemmatizer
-from gensim.models.ldamodel import LdaModel as ldamodel
-from gensim import corpora, models
 import pandas as pd
-import gensim
-import pprint
-from gensim.test.utils import datapath
-import pyLDAvis
-import pyLDAvis.gensim
-
-stop_words = stopwords.words('english')
-stop_words.extend(['content', 'context', 'number', 'file', 'yet', 'user', 'year', 'name', 'column', 'row',
-                   'dataset', 'data', 'database', 'from', 'subject', 're',
-                   'edu', 'use', 'not', 'would', 'say',
-                   'could', '_', 'be', 'know', 'good', 'go', 'get', 'do', 'done',
-                   'try', 'many', 'some', 'nice', 'thank', 'think', 'see', 'rather',
-                   'easy', 'easily', 'lot', 'lack', 'make', 'want', 'seem', 'run', 'need',
-                   'even', 'right', 'line', 'even', 'also', 'may', 'take', 'come'])
 
 
-pattern = r'\b[^\d\W]+\b'
-tokenizer = RegexpTokenizer(pattern)
-lemmatizer = WordNetLemmatizer()
+def clean(filename):
 
-# Input from csv
-df = pd.read_csv('voted-kaggle-dataset.csv')
+    stop_words = stopwords.words('english')
+    stop_words.extend(['content', 'context', 'number', 'file', 'yet', 'user', 'year', 'name', 'column', 'row',
+                       'dataset', 'datasets', 'data', 'database', 'from', 'subject', 're', 'numeric', 'integer', 'strongly', 'csv',
+                       'edu', 'use', 'not', 'would', 'say', 'text', 'contains', 'file',
+                       'could', '_', 'be', 'know', 'good', 'go', 'get', 'do', 'done', 'made', 'highly', 'numerical',
+                       'try', 'many', 'some', 'nice', 'thank', 'think', 'see', 'rather',
+                       'easy', 'easily', 'lot', 'lack', 'make', 'want', 'seem', 'run', 'need',
+                       'even', 'right', 'line', 'even', 'also', 'may', 'take', 'come'])
 
-# sample data
-#print(df['Description'].head())
 
-# list for tokenized documents in loop
-texts = []
+    pattern = r'\b[^\d\W]+\b'
+    tokenizer = RegexpTokenizer(pattern)
+    lemmatizer = WordNetLemmatizer()
 
-# loop through document list
-for i in df['Description'].iteritems():
-    # clean and tokenize document string
-    raw = str(i[1]).lower()
-    tokens = tokenizer.tokenize(raw)
+    # Input from csv
+    df = pd.read_csv(filename)
 
-    # remove stop words from tokens
-    stopped_tokens = [raw for raw in tokens if raw not in stop_words]
+    #Only model first 100 docs
+    df = df['Description'][:100]
 
-    # lemmatize tokens
-    lemma_tokens = [lemmatizer.lemmatize(toks) for toks in stopped_tokens]
+    texts = []
 
-    # remove word containing only single char
-    new_lemma_tokens = [raw for raw in lemma_tokens if len(raw) > 1]
+    # loop through document list
+    for i in df.iteritems():
+        # clean and tokenize document string
+        raw = str(i[1]).lower()
+        tokens = tokenizer.tokenize(raw)
 
-    # add tokens to list
-    texts.append(new_lemma_tokens)
+        # remove stop words from tokens
+        stopped_tokens = [raw for raw in tokens if raw not in stop_words]
 
-# sample data
-#print(len(texts))
+        # lemmatize tokens
+        lemma_tokens = [lemmatizer.lemmatize(toks) for toks in stopped_tokens]
 
-# turn our tokenized documents into a id <-> term dictionary
-dictionary = corpora.Dictionary(texts)
-# convert tokenized documents into a document-term matrix
-corpus = [dictionary.doc2bow(text) for text in texts]
+        # remove word containing only single char
+        new_lemma_tokens = [raw for raw in lemma_tokens if len(raw) > 1]
 
-lda_model = ldamodel(corpus, num_topics=15, id2word = dictionary, passes=20)
-pprint.pprint(lda_model.top_topics(corpus,topn=5))
+        # add tokens to list
+        texts.append(new_lemma_tokens)
 
-# # Save model to disk.
-temp_file = datapath("model")
-# model.save(temp_file)
-
-# Load a potentially pretrained model from disk.
-# lda = ldamodel.load(temp_file)
-
-print(lda_model.show_topics())
-
-prepared = pyLDAvis.gensim.prepare(lda_model, corpus, dictionary)
-pyLDAvis.display(prepared)
-pyLDAvis.prepared_data_to_html(prepared, 'vis_topic_model_01.html')
-# pyLDAvis.show(prepared)
+    return texts
