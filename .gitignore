@@ -5,6 +5,10 @@
 /04_word_embeddings/data
 /data
 
+
+04_word_embeddings/load_embeddings.py
+05_topic_modeling/01_overall_salient_terms.jpeg
+
 .DS_Store
 
 #Files
