@@ -2,7 +2,7 @@
 > **Date:** 14.05. *(Due: 14.05.)*  
 > **Name:** `AlVy` Alyona Vyshnevska  
 > **Session:** [Introduction](../index)   
-> **Code:** [here]()   
+> **Code:** [here](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/05_topic_modeling)   
 
 ----
 
