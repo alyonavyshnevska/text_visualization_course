@@ -13,18 +13,18 @@ def train_model(texts):
     # convert tokenized documents into a document-term matrix
     corpus = [dictionary.doc2bow(text) for text in texts]
 
-    # Load a potentially pretrained model from disk.
-    if ldamodel.load(datapath("model")):
-        lda_model = ldamodel.load(datapath("model"))
+    # # Load a potentially pretrained model from disk.
+    # if ldamodel.load(datapath("model")):
+    #     lda_model = ldamodel.load(datapath("model"))
+    #
+    # else:
+    # train model
+    lda_model = ldamodel(corpus, num_topics=10, id2word=dictionary)
+    pprint.pprint(lda_model.top_topics(corpus, topn=5))
 
-    else:
-        # train model
-        lda_model = ldamodel(corpus, num_topics=10, id2word=dictionary)
-        pprint.pprint(lda_model.top_topics(corpus, topn=5))
-
-        # Save model to disk.
-        temp_file = datapath("model")
-        lda_model.save(temp_file)
+    # Save model to disk.
+    temp_file = datapath("model")
+    lda_model.save(temp_file)
 
     return lda_model, corpus, dictionary
 
