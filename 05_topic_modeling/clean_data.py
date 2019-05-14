@@ -72,6 +72,6 @@ temp_file = datapath("model")
 print(lda_model.show_topics())
 
 prepared = pyLDAvis.gensim.prepare(lda_model, corpus, dictionary)
-pyLDAvis.show(prepared)
+pyLDAvis.display(prepared)
 pyLDAvis.prepared_data_to_html(prepared, 'vis_topic_model_01.html')
-# pyLDAvis.display(vis_data)
+# pyLDAvis.show(prepared)
