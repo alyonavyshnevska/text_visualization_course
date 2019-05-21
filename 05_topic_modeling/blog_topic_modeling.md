@@ -1,10 +1,4 @@
 # Topics of Datasets on Kaggle
-> **Date:** 14.05. *(Due: 14.05.)*  
-> **Name:** `AlVy` Alyona Vyshnevska  
-> **Session:** [Introduction](../index)   
-> **Code:** [here]()   
-
-----
 
 
 Let's find out if we can group descriptions of Kaggle datasets by topics. 
@@ -24,6 +18,9 @@ however they do not convey any interesting information for our purposes.
 - Number of topics: 10 (arbitrary choice)
 - Save model for later use 
 
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/overall_salient.jpeg?raw=true)
+
 ### Discuss
 So what do we observe?
 
@@ -40,8 +37,25 @@ Overall, most salient terms are:
 - health
 - bitcoin
 
-Per topic:
 
+The only **outlier-topic** is best described by: interested, disagree, enjoy, agree, much, and school. Words like student and college also appear. 
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/outlier_topic_4.jpeg?raw=true)
+
+Topic **two** and topic **eight** are positioned closely to each other and a bit further away from every other topic. They shape 2 out of 5 top words: agree and time. Otherwise, topic two is chracterized by: 
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_2.jpeg?raw=true)
+
+Topic 8 is characterized by:
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_8.jpeg?raw=true)
+
+Topic 7 is largely included in the topic 1, so one could reduce the size of topics from 10 to 9.  
+The most relevant words for topic 7 are: crash, time, dub, cluster, using. Player, dollar, and movie also appear. Time and dub are also in the top five of the larger topc 1.
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_7.jpeg?raw=true)
+
+![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_1.jpeg?raw=true)
 
 
 ### Future Work
