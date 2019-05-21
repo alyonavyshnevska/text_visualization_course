@@ -18,6 +18,7 @@ however they do not convey any interesting information for our purposes.
 - Number of topics: 10 (arbitrary choice)
 - Save model for later use 
 
+
 ![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/overall_salient.jpeg?raw=true)
 
 ### Discuss
@@ -35,6 +36,7 @@ Overall, most salient terms are:
 - agree
 - health
 - bitcoin
+
 
 The only **outlier-topic** is best described by: interested, disagree, enjoy, agree, much, and school. Words like student and college also appear. 
 
@@ -54,6 +56,7 @@ The most relevant words for topic 7 are: crash, time, dub, cluster, using. Playe
 ![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_7.jpeg?raw=true)
 
 ![](https://github.com/alyonavyshnevska/text_visualization_course/blob/master/05_topic_modeling/img/topic_1.jpeg?raw=true)
+
 
 ### Future Work
 

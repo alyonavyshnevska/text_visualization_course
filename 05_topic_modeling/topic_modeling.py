@@ -13,25 +13,25 @@ def train_model(texts):
     # convert tokenized documents into a document-term matrix
     corpus = [dictionary.doc2bow(text) for text in texts]
 
-    # # Load a potentially pretrained model from disk.
-    # if ldamodel.load(datapath("model")):
-    #     lda_model = ldamodel.load(datapath("model"))
-    #
-    # else:
-    # train model
-    lda_model = ldamodel(corpus, num_topics=10, id2word=dictionary)
-    pprint.pprint(lda_model.top_topics(corpus, topn=5))
+    # Load a potentially pretrained model from disk.
+    if datapath("model_small"):
+        lda_model = ldamodel.load(datapath("model_small"))
 
-    # Save model to disk.
-    temp_file = datapath("model")
-    lda_model.save(temp_file)
+    else:
+    # train model
+        lda_model = ldamodel(corpus, num_topics=10, id2word=dictionary)
+        pprint.pprint(lda_model.top_topics(corpus, topn=5))
+
+        # Save model to disk.
+        temp_file = datapath("model_small")
+        lda_model.save(temp_file)
 
     return lda_model, corpus, dictionary
 
 
 def visualize_pyldavis(lda_model, corpus, dictionary):
     prepared = pyLDAvis.gensim.prepare(lda_model, corpus, dictionary)
-    pyLDAvis.save_html(prepared, 'vis_topic_model_01.html')
+    pyLDAvis.save_html(prepared, 'vis_topic_model_02.html')
     pyLDAvis.show(prepared)
 
 
