@@ -47,3 +47,7 @@ def clean(filename):
         texts.append(new_lemma_tokens)
 
     return texts
+
+print('hello')
+for i in range(1,10):
+    print(i)
