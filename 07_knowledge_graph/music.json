@@ -1,0 +1,402 @@
+{
+  "name": "Music Genres",
+  "children": [
+    {
+      "name": "Classical",
+      "children": [
+        {
+          "name": "20th Century Classical"
+        },
+        {
+          "name": "Composed Music"
+        },
+        {
+          "name": "Opera"
+        },
+        {
+          "name": "Chamber Music"
+        },
+        {
+          "name": "Choral Music"
+        },
+        {
+          "name": "Symphony"
+        },
+        {
+          "name": "Contemporary Classical"
+        }
+      ]
+    },
+    {
+      "name": "Old-Time / Historic",
+      "children": []
+    },
+    {
+      "name": "Country",
+      "children": [
+        {
+          "name": "Bluegrass"
+        },
+        {
+          "name": "Americana"
+        },
+        {
+          "name": "Rockabilly"
+        },
+        {
+          "name": "Country & Western"
+        }
+      ]
+    },
+    {
+      "name": "Pop",
+      "children": [
+        {
+          "name": "Experimental Pop"
+        },
+        {
+          "name": "Synth Pop"
+        }
+      ]
+    },
+    {
+      "name": "Folk",
+      "children": [
+        {
+          "name": "Psych-Folk"
+        },
+        {
+          "name": "Free-Folk"
+        },
+        {
+          "name": "Freak-Folk"
+        },
+        {
+          "name": "Singer-Songwriter"
+        },
+        {
+          "name": "British Folk"
+        }
+      ]
+    },
+    {
+      "name": "Hip-Hop",
+      "children": [
+        {
+          "name": "Nerdcore"
+        },
+        {
+          "name": "Alternative Hip-Hop"
+        },
+        {
+          "name": "Rap"
+        },
+        {
+          "name": "Breakbeat"
+        },
+        {
+          "name": "Abstract Hip-Hop"
+        },
+        {
+          "name": "Wonky"
+        },
+        {
+          "name": "Hip-Hop Beats"
+        }
+      ]
+    },
+    {
+      "name": "International",
+      "children": [
+        {
+          "name": "Latin America"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "Reggae - Dub"
+        },
+        {
+          "name": "Indian"
+        },
+        {
+          "name": "African"
+        },
+        {
+          "name": "Middle East"
+        },
+        {
+          "name": "Polka"
+        },
+        {
+          "name": "Balkan"
+        },
+        {
+          "name": "Europe"
+        },
+        {
+          "name": "Brazilian"
+        },
+        {
+          "name": "Asia-Far East"
+        },
+        {
+          "name": "Pacific"
+        },
+        {
+          "name": "Celtic"
+        },
+        {
+          "name": "Flamenco"
+        },
+        {
+          "name": "Latin"
+        }
+      ]
+    },
+    {
+      "name": "Jazz",
+      "children": [
+        {
+          "name": "Jazz: Vocal"
+        },
+        {
+          "name": "Free-Jazz"
+        },
+        {
+          "name": "Jazz: Out"
+        },
+        {
+          "name": "Be-Bop"
+        },
+        {
+          "name": "Big Band/Swing"
+        },
+        {
+          "name": "Modern Jazz"
+        }
+      ]
+    },
+    {
+      "name": "Easy Listening",
+      "children": [
+        {
+          "name": "Easy Listening: Vocal"
+        },
+        {
+          "name": "Lounge"
+        },
+        {
+          "name": "Nu-Jazz"
+        }
+      ]
+    },
+    {
+      "name": "Soul-RnB",
+      "children": [
+        {
+          "name": "Disco"
+        },
+        {
+          "name": "Funk"
+        }
+      ]
+    },
+    {
+      "name": "Instrumental",
+      "children": [
+        {
+          "name": "Soundtrack"
+        },
+        {
+          "name": "Ambient"
+        },
+        {
+          "name": "New Age"
+        }
+      ]
+    },
+    {
+      "name": "Electronic",
+      "children": [
+        {
+          "name": "Ambient Electronic"
+        },
+        {
+          "name": "Techno"
+        },
+        {
+          "name": "House"
+        },
+        {
+          "name": "Glitch"
+        },
+        {
+          "name": "Minimal Electronic"
+        },
+        {
+          "name": "Breakcore - Hard"
+        },
+        {
+          "name": "IDM"
+        },
+        {
+          "name": "Trip-Hop"
+        },
+        {
+          "name": "Dance"
+        },
+        {
+          "name": "Chip Music"
+        },
+        {
+          "name": "Drum & Bass"
+        },
+        {
+          "name": "Dubstep"
+        },
+        {
+          "name": "Downtempo"
+        },
+        {
+          "name": "Jungle"
+        }
+      ]
+    },
+    {
+      "name": "Experimental",
+      "children": [
+        {
+          "name": "Avant-Garde"
+        },
+        {
+          "name": "Novelty"
+        },
+        {
+          "name": "Audio Collage"
+        },
+        {
+          "name": "Field Recordings"
+        },
+        {
+          "name": "Noise"
+        },
+        {
+          "name": "Electroacoustic"
+        },
+        {
+          "name": "Drone"
+        },
+        {
+          "name": "Unclassifiable"
+        },
+        {
+          "name": "Sound Poetry"
+        },
+        {
+          "name": "Sound Collage"
+        },
+        {
+          "name": "Musique Concrete"
+        },
+        {
+          "name": "Improv"
+        },
+        {
+          "name": "Minimalism"
+        },
+        {
+          "name": "Sound Art"
+        }
+      ]
+    },
+    {
+      "name": "Blues",
+      "children": [
+        {
+          "name": "Gospel"
+        }
+      ]
+    },
+    {
+      "name": "Rock",
+      "children": [
+        {
+          "name": "Punk"
+        },
+        {
+          "name": "Post-Rock"
+        },
+        {
+          "name": "Lo-Fi"
+        },
+        {
+          "name": "Metal"
+        },
+        {
+          "name": "Krautrock"
+        },
+        {
+          "name": "Loud-Rock"
+        },
+        {
+          "name": "Psych-Rock"
+        },
+        {
+          "name": "Indie-Rock"
+        },
+        {
+          "name": "Industrial"
+        },
+        {
+          "name": "Garage"
+        },
+        {
+          "name": "New Wave"
+        },
+        {
+          "name": "Progressive"
+        },
+        {
+          "name": "Goth"
+        },
+        {
+          "name": "Shoegaze"
+        },
+        {
+          "name": "Rock Opera"
+        }
+      ]
+    },
+    {
+      "name": "Spoken",
+      "children": [
+        {
+          "name": "Comedy"
+        },
+        {
+          "name": "Radio"
+        },
+        {
+          "name": "Spoken Weird"
+        },
+        {
+          "name": "Poetry"
+        },
+        {
+          "name": "Banter"
+        },
+        {
+          "name": "Spoken Word"
+        },
+        {
+          "name": "Radio Theater"
+        },
+        {
+          "name": "Musical Theater"
+        }
+      ]
+    }
+  ]
+}
