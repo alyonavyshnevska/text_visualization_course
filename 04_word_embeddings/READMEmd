@@ -1,10 +1,4 @@
-# Title of your post
-> **Date:** 07.04. *(Due: 07.04.)*  
-> **Name:** `AlVy` Alyona Vyshnevska    
-> **Session:** [Word Embeddings + Visualization](../index)   
-> **Code:** [github](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/04_word_embeddings)   
-
-----
+# Searching for the Meaning of Life...
 
 The idea behind word embeddings is that words similar in meaning appear in similar contexts. Hence, one can infer a meaning of a word by looking at what other words appear in similar places in text corpora. 
 
