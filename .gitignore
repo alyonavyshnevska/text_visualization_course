@@ -5,6 +5,7 @@
 02_vector_space_models_tfidf/
 /07_knowledge_graph/data
 /data
+/src
 
 
 04_word_embeddings/load_embeddings.py
