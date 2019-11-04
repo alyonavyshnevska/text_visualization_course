@@ -37,7 +37,8 @@ The colours represent the different chats.
 
 <div>
     <a href="https://plot.ly/~gigi_karlo_/16/?share_key=Oy8NL8XQip9HO5375uPnEK" target="_blank" title="2d_reduced" style="display: block; text-align: center;"><img src="https://plot.ly/~gigi_karlo_/16.png?share_key=Oy8NL8XQip9HO5375uPnEK" alt="2d_reduced" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="gigi_karlo_:16" sharekey-plotly="Oy8NL8XQip9HO5375uPnEK" src="https://plot.ly/embed.js" async></script>
+    
+
 </div>
 
 
@@ -54,7 +55,7 @@ We can see that there are a few messages around 400 characters, then there is a 
 
 <div>
     <a href="https://plot.ly/~gigi_karlo_/12/?share_key=KwSMEELaRFYvBQBld7POJ8" target="_blank" title="3dplot_02" style="display: block; text-align: center;"><img src="https://plot.ly/~gigi_karlo_/12.png?share_key=KwSMEELaRFYvBQBld7POJ8" alt="3dplot_02" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="gigi_karlo_:12" sharekey-plotly="KwSMEELaRFYvBQBld7POJ8" src="https://plot.ly/embed.js" async></script>
+<!--     <script data-plotly="gigi_karlo_:12" sharekey-plotly="KwSMEELaRFYvBQBld7POJ8" src="https://plot.ly/embed.js" async></script> -->
 </div>
 
 
@@ -63,7 +64,7 @@ Then I changed the 'colour' parameter to correspond to different chats. There se
 
 <div>
     <a href="https://plot.ly/~gigi_karlo_/14/?share_key=lKLpt7VNDLZeRG9ic65auL" target="_blank" title="3dplot_03" style="display: block; text-align: center;"><img src="https://plot.ly/~gigi_karlo_/14.png?share_key=lKLpt7VNDLZeRG9ic65auL" alt="3dplot_03" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="gigi_karlo_:14" sharekey-plotly="lKLpt7VNDLZeRG9ic65auL" src="https://plot.ly/embed.js" async></script>
+<!--     <script data-plotly="gigi_karlo_:14" sharekey-plotly="lKLpt7VNDLZeRG9ic65auL" src="https://plot.ly/embed.js" async></script> -->
 </div>
 
 
@@ -75,7 +76,7 @@ The interesting thing here is that the representations of messages in chats (the
 
 <div>
     <a href="https://plot.ly/~gigi_karlo_/10/?share_key=tlDaskJBY1yVKpscwL0HFk" target="_blank" title="3d-scatter-colorscale" style="display: block; text-align: center;"><img src="https://plot.ly/~gigi_karlo_/10.png?share_key=tlDaskJBY1yVKpscwL0HFk" alt="3d-scatter-colorscale" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="gigi_karlo_:10" sharekey-plotly="tlDaskJBY1yVKpscwL0HFk" src="https://plot.ly/embed.js" async></script>
+<!--     <script data-plotly="gigi_karlo_:10" sharekey-plotly="tlDaskJBY1yVKpscwL0HFk" src="https://plot.ly/embed.js" async></script> -->
 </div>
 
 
