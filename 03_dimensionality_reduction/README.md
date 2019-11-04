@@ -2,7 +2,7 @@
 # Visualizing WhatsApp Chats
 
 ## Idea
-I will continue to work on visualising the personal WhatsApp Chat Messages. I have re-used the function generating a tf-idf matrix from the previous blog post. 
+I will continue to work on visualising the a set of personal WhatsApp Chat Messages. I have re-used the function generating a tf-idf matrix from the previous blog post. 
 
 
 ## Data
