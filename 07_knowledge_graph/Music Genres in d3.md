@@ -5,6 +5,10 @@
 > **Code:** [here](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/07_knowledge_graph)   
 > 
 ----
+Click on the image to open the interactive visualisation:
+
+[![](screenshot.jpeg)](https://alyonavyshnevska.github.io/assets/projects/knowledge_graph/)
+
 ## Idea
 
 I decided to focus on visualising a knowledge graph in an interactive way as well as extracting data automatically. 
@@ -25,7 +29,6 @@ I extracted the relevant columns with information on `genre_id`, `genre title` a
 Then I created a dictionary where I looked first for genres that have no parents. And then added the genres that have them as parents.
 
 Then I adjusted the code so that it works with my data. 
-
 
 
 ## What have we learnt
