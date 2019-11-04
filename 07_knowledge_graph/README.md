@@ -1,9 +1,6 @@
 # Music Genres in d3
-> **Date:** 27.05. *(Due: 27.05.)*  
-> **Name:** `AlVy` Alyona Vyshnevska  
-> **Session:** [Introduction](../index)   
-> **Code:** [here](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/07_knowledge_graph)   
-> 
+
+
 ----
 Click on the image to open the interactive visualisation:
 
