@@ -1,10 +1,4 @@
-# Title of your post
-> **Date:** 07.04. *(Due: 07.04.)*  
-> **Name:** `AlVy` Alyona Vyshnevska    
-> **Session:** [Word Embeddings + Visualization](../index)   
-> **Code:** [github](https://github.com/alyonavyshnevska/text_visualization_course/tree/master/04_word_embeddings)   
-
-----
+# Searching for the Meaning of Life...
 
 The idea behind word embeddings is that words similar in meaning appear in similar contexts. Hence, one can infer a meaning of a word by looking at what other words appear in similar places in text corpora. 
 
@@ -41,12 +35,12 @@ Then I asked THE question: what are the most similar vectors to the word 'life'.
 
 Monty Python's 'The Meaning of Life' suggested that 'life' is most similar to... bugger, hell, and goat.
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/monty_python_life.png)
+![](img/monty_python_life.png)
 
 I increased the default number of similar vectors, which is 10, to 30. And this is where things got interesting: I received completely different results. 
 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/monty_python_life_04.png)
+![](img/monty_python_life_04.png)
 
 The thing is, there is a great deal of randomisation in initialisation and training in the Word2Vec algorithms (CBOW and skip-gram), and the algorithms are also sensitive to order-of-presentation. Therefore, if I delete the created word vectors and create them again, I get different similar words. 
 
@@ -64,15 +58,15 @@ I've tweaked the parameters until I arrived at the following configuration:
 
 With these, the model delivered consist results. The difference is mostly in the colours with which wordcloud visualises the words. 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/monty_iter_50_01.png)
+![](img/monty_iter_50_01.png)
 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/monty_iter_50_02.png)
+![](img/monty_iter_50_02.png)
 
 Let us once more tweak a parameter and see if skip-gram will perform any different from CBOW (it should arrive at the same result, even though the algorithms are quite the opposite of each other). Indeed, the resutls are not identical, but very similar. 
 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/monty_iter_50_03.png)
+![](img/monty_iter_50_03.png)
 
 Well, so what is the meaning of 'life', then? 
 
@@ -88,7 +82,7 @@ Let's compare the performance of CBOW and skip-gram. The parameters are just the
 					 min_count=1, seed=1, workers=1, iter=50
 					 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/adams_iter_50_01.png)
+![](img/adams_iter_50_01.png)
 
 Note: *unintelligent* is the second most similar word. In Monty Python's _The Meaning of Life_ *intelligent* was in the top 10. 
 
@@ -98,7 +92,7 @@ Note: *unintelligent* is the second most similar word. In Monty Python's _The Me
 Will skip-gram produce similar results? We just need to set `sg=1` as a parameter of `Word2Vec`, and we're good to go. 
 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/adams_iter_50_02.png)
+![](img/adams_iter_50_02.png)
 
 
 Yes, same results.
@@ -106,7 +100,7 @@ Yes, same results.
 
 ### _Wikipedia's_ Article on Life
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/wiki_iter_50_01.png)
+![](img/wiki_iter_50_01.png)
 
 
 The top meaningful results are *lovelock*, *explaining*, *challenge*, *scientist*. It seems to be a common theme that words such as *struggle* and *challenge* are included. 
@@ -117,7 +111,7 @@ I couldn't get my own vectors loaded into the projector, therefore we will only 
 
 Word2Vec All tensor, which consists of around 70K words and 200 dimensions reckons that *career*, *biography*, *childhood* are all similar in their memaning to _life_:
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/pretrained_10k.jpeg)
+![](img/pretrained_10k.jpeg)
 
 
 
@@ -126,7 +120,7 @@ Note that _death_ is also part of it. To me, this is a natural consequence of th
 To illustrate this phenomenon, let us look at the nearest neighbours of the word _bad_. I would expect that he word _good_ would be very closely positioned.
 
 
-![](/Users/alyona/Documents/github_projects/2019_sose/visualize_chat_messages/04_word_embeddings/img/pretrained_bad.jpeg)
+![](img/pretrained_bad.jpeg)
 
 Indeed, good is distributionally most similar to _bad_.
 
